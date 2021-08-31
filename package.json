@@ -1,0 +1,26 @@
+{
+  "name": "On12-API-Final-Meu_Pet_PE",
+  "version": "1.0.0",
+  "description": "API voltada para juntar anjinhos desabrigados com seus tutores",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.3",
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "API",
+    "Animal",
+    "PET",
+    "Adote",
+    "Adoção"
+  ],
+  "author": "Mariana Andrade",
+  "license": "ISC"
+}
