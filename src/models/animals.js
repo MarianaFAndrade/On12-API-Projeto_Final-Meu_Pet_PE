@@ -43,7 +43,9 @@ const animalsSchema = new mongoose.Schema({
         type: Date,
         required: true,
         default: new Date
-    }
+    },
+}, {
+    versionKey: false
 })
 
 module.exports = mongoose.model('animals', animalsSchema)

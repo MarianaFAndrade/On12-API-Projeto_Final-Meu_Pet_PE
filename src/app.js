@@ -1,27 +1,18 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
+const express = require ('express');
+const app = express()
 
-// mongoose.connect("mongodb://localhost:27017/reprograma-trip", {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// })
+const db = require('./src/data/database')
+db.connect()
 
-// let db = mongoose.connection
+app.use(express.json())
 
-// db.on("error", console.log.bind(console, "connection error:"))
-// db.once("open", function () {
-//     console.log("conexão feita com sucesso.")
-// })
+const animalsRouter = require('./src/routes/animals.routes')
+app.use('/animals', animalsRouter)
 
+const shelterRouter = require('./src/routes/shelter.routes')
+app.use('/shelter', shelterRouter)
 
-// const app = express();
+const tutorRouter = require('./src/routes/tutor.routes')
+app.use('/tutor', tutorRouter)
 
-// const travelsRoutes = require("./routes/travelsRoutes");
-
-// app.use(cors());
-
-// app.use(express.json());
-// app.use("/", travelsRoutes);
-
-// module.exports = app;
+module.exports = app

@@ -1,13 +1,25 @@
 const mongoose = require('mongoose')
 const Animals = require('../models/animals')
 
+const getAllAnimalsShelter = async (req, res) => {
+    const animaisPorAbrigo = await Animals.find().populate('abrigo')
+    const animaisPorAbrigosFiltrados = animaisPorAbrigo.filter(abrigos => abrigos.abrigo.id == req.params.id)
+    res.json(animaisPorAbrigosFiltrados)
+}
+
+// const getAllAnimalsBairro = async (req, res) => {
+//     const animaisPorBairro = await Animals.find().populate('bairro')
+//     const animaisPorBairroFiltrados = animaisPorBairro.filter(bairros => bairros.bairro == req.bairro)
+//     res.json(animaisPorBairroFiltrados)
+// }
+
 const getAll = async (req, res) => {
     const animals = await Animals.find().populate('abrigo')
     res.json(animals)
 }
 
-const createAnimals =  async (req, res) => {
-    const createAnimals = new Animals ({
+const createAnimals = async (req, res) => {
+    const createAnimals = new Animals({
         _id: new mongoose.Types.ObjectId(),
         nome: req.body.nome,
         especie: req.body.especie,
@@ -21,7 +33,7 @@ const createAnimals =  async (req, res) => {
         criadoEm: req.body.criadoEm,
     })
     const animalsJaExiste = await Animals.findOne({
-        nome: req.body.nome, 
+        nome: req.body.nome,
         especie: req.body.especie,
         sexo: req.body.sexo,
         idade: req.body.idade,
@@ -33,18 +45,63 @@ const createAnimals =  async (req, res) => {
     })
 
     if (animalsJaExiste) {
-        return res.status(409).json({error: 'Animal já cadastrado'})
+        return res.status(409).json({ error: 'Animal já cadastrado' })
     }
 
-    try{
+    try {
         const newAnimals = await createAnimals.save()
         res.status(201).json(newAnimals)
-    }   catch(err){
-        res.status(400).json({ message: err.message})
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+}
+
+const updateAnimalById = async (req, res) => {
+    try {
+        const animais = await Animals.findById(req.params.id)
+
+        if (animais == null) {
+            return res.status(404).json({ message: "Animal não encontrado" })
+        }
+        if (req.body.nome != null) {
+            animais.nome = req.body.nome
+        }
+        if (req.body.especie != null) {
+            animais.especie = req.body.especie
+        }
+        if (req.body.sexo != null) {
+            animais.sexo = req.body.sexo
+        }
+        if (req.body.idade != null) {
+            animais.idade = req.body.idade
+        }
+        if (req.body.porte != null) {
+            animais.porte = req.body.porte
+        }
+        if (req.body.castrado != null) {
+            animais.castrado = req.body.castrado
+        }
+        if (req.body.abrigo != null) {
+            animais.abrigo = req.body.abrigo
+        }
+        if (req.body.bairro != null) {
+            animais.bairro = req.body.bairro
+        }
+        if (req.body.status != null) {
+            animais.status = req.body.status
+        }
+        const animalAtualizado = await animais.save()
+        res.status(200).json(animalAtualizado)
+
+    } catch (err) {
+        res.status(500).json({ message: err.message })
     }
 }
 
 module.exports = {
     getAll,
-    createAnimals
+    createAnimals,
+    updateAnimalById,
+    getAllAnimalsShelter,
+    // getAllAnimalsBairro,
 }

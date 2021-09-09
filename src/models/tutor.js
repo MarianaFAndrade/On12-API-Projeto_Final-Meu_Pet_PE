@@ -26,7 +26,9 @@ const tutorSchema = new mongoose.Schema({
         type: Date,
         required: true,
         default: new Date
-    }
+    },
+}, {
+    versionKey: false
 })
 
 module.exports = mongoose.model('tutor', tutorSchema)

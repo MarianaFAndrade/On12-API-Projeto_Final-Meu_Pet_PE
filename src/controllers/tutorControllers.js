@@ -36,7 +36,38 @@ const createTutor = async (req, res) => {
     }
 }
 
+const updateTutorById = async (req, res) => {
+    try {
+        const tutores = await Tutor.findById(req.params.id)
+
+        if (tutores == null) {
+            return res.status(404).json({ message: "Tutor não encontrado" })
+        }
+        if (req.body.nome != null) {
+            tutores.nome = req.body.nome
+        }
+        if (req.body.endereco != null) {
+            tutores.endereco = req.body.endereco
+        }
+        if (req.body.bairro != null) {
+            tutores.bairro = req.body.bairro
+        }
+        if (req.body.telefone != null) {
+            tutores.telefone = req.body.telefone
+        }
+        if (req.body.email != null) {
+            tutores.email = req.body.email
+        }
+        const updateTutorById = await tutores.save()
+        res.status(200).json(updateTutorById)
+
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
 module.exports = {
     getAll,
-    createTutor
+    createTutor,
+    updateTutorById
 }

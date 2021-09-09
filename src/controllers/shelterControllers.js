@@ -28,7 +28,35 @@ const createShelter = async (req, res) => {
     }
 }
 
+const updateShelterById = async (req, res) => {
+    try {
+        const abrigo = await Shelter.findById(req.params.id)
+
+        if (abrigo == null) {
+            return res.status(404).json({ message: "Abrigo não encontrado" })
+        }
+        if (req.body.nome != null) {
+            abrigo.nome = req.body.nome
+        }
+        if (req.body.endereco != null) {
+            abrigo.endereco = req.body.endereco
+        }
+        if (req.body.bairro != null) {
+            abrigo.bairro = req.body.bairro
+        }
+        if (req.body.telefone != null) {
+            abrigo.telefone = req.body.telefone
+        }
+        const shelterAtualizado = await abrigo.save()
+        res.status(200).json(shelterAtualizado)
+
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
 module.exports = {
     getAll,
-    createShelter
+    createShelter,
+    updateShelterById
 }
