@@ -4,7 +4,12 @@ const Tutor = require('../models/tutor')
 const getAll = async (req, res) => {
     const tutor = await Tutor.find()
     res.json(tutor)
-}
+};
+
+const getById = async (req, res) => {
+    const tutorId = await Tutor.findById(req.params.id);
+    res.status(200).json(tutorId);
+};
 
 const createTutor = async (req, res) => {
     const createTutor = new Tutor ({
@@ -34,7 +39,7 @@ const createTutor = async (req, res) => {
     }   catch(err){
         res.status(400).json({ message: err.message})
     }
-}
+};
 
 const updateTutorById = async (req, res) => {
     try {
@@ -64,10 +69,26 @@ const updateTutorById = async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message })
     }
-}
+};
+
+const deletarTutorById = async (req, res) => {
+    const tutorDelete = await Tutor.findById(req.params.id);
+    if (tutorDelete == null) {
+      return res.status(404).json({ message: "Abrigo não encontrado." });
+    }
+    try {
+      await tutorDelete.remove();
+      res.status(200).json({ message: "Abrigo excluído com sucesso." });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
 
 module.exports = {
     getAll,
+    getById,
     createTutor,
-    updateTutorById
+    updateTutorById,
+    deletarTutorById
+    
 }

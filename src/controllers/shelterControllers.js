@@ -4,7 +4,12 @@ const Shelter = require('../models/shelter')
 const getAll = async (req, res) => {
     const shelter = await Shelter.find()
     res.json(shelter)
-}
+};
+
+const getById = async (req, res) => {
+    const shelterId = await Shelter.findById(req.params.id);
+    res.status(200).json(shelterId);
+};
 
 const createShelter = async (req, res) => {
     const createShelter = new Shelter ({
@@ -26,7 +31,7 @@ const createShelter = async (req, res) => {
     }   catch(err){
         res.status(400).json({ message: err.message})
     }
-}
+};
 
 const updateShelterById = async (req, res) => {
     try {
@@ -53,10 +58,25 @@ const updateShelterById = async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message })
     }
-}
+};
+
+const deletarsShelterById = async (req, res) => {
+    const shelterDelete = await Shelter.findById(req.params.id);
+    if (shelterDelete == null) {
+      return res.status(404).json({ message: "Abrigo não encontrado." });
+    }
+    try {
+      await shelterDelete.remove();
+      res.status(200).json({ message: "Abrigo excluído com sucesso." });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+};
 
 module.exports = {
     getAll,
+    getById,
     createShelter,
-    updateShelterById
+    updateShelterById,
+    deletarsShelterById
 }
