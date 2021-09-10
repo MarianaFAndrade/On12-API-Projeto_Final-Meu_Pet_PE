@@ -11,6 +11,14 @@ const getById = async (req, res) => {
     res.status(200).json(shelterId);
 };
 
+const getAllShelterForNeighborhood = async (req, res) => {
+    const abrigosPorBairro = await Animals.find().populate("bairro");
+    const abrigosPorBairroFiltrados = abrigosPorBairro.filter(
+      (animal) => animal.bairro == req.body.bairro
+    );
+    res.json(abrigosPorBairroFiltrados);
+  };
+
 const createShelter = async (req, res) => {
     const createShelter = new Shelter ({
         _id: new mongoose.Types.ObjectId(),
@@ -76,6 +84,7 @@ const deletarsShelterById = async (req, res) => {
 module.exports = {
     getAll,
     getById,
+    getAllShelterForNeighborhood,
     createShelter,
     updateShelterById,
     deletarsShelterById
