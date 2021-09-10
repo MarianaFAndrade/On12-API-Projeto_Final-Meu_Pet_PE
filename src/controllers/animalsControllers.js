@@ -19,7 +19,7 @@ const getAllAnimalsShelter = async (req, res) => {
   res.json(animaisPorAbrigosFiltrados);
 };
 
-const getAllShelterForneighborhood = async (req, res) => {
+const getAllAnimalsForShelterNeighborhood = async (req, res) => {
   const animaisPorBairro = await Animals.find().populate("bairro");
   const animaisPorBairroFiltrados = animaisPorBairro.filter(
     (animal) => animal.bairro == req.body.bairro
@@ -123,7 +123,7 @@ module.exports = {
   getById,
   getAll,
   getAllAnimalsShelter,
-  getAllShelterForneighborhood,
+  getAllAnimalsForShelterNeighborhood,
   createAnimals,
   updateAnimalById,
   deletarAnimalById,

@@ -3,7 +3,7 @@ const router = express.Router()
 const controller = require('../controllers/animalsControllers')
 
 router.get('/', controller.getAll)
-router.get('/bairro', controller.getAllShelterForneighborhood)
+router.get('/bairro', controller.getAllAnimalsForShelterNeighborhood)
 router.get('/:id', controller.getById)
 router.get('/shelter/:id', controller.getAllAnimalsShelter)
 router.post('/', controller.createAnimals)
