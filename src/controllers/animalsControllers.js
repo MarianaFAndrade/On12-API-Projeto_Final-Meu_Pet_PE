@@ -1,3 +1,4 @@
+const express = require('express')
 const mongoose = require("mongoose");
 const Animals = require("../models/animals");
 
@@ -19,13 +20,13 @@ const getAllAnimalsShelter = async (req, res) => {
   res.json(animaisPorAbrigosFiltrados);
 };
 
-const getAllAnimalsForShelterNeighborhood = async (req, res) => {
-  const animaisPorBairro = await Animals.find().populate("bairro");
-  const animaisPorBairroFiltrados = animaisPorBairro.filter(
-    (animal) => animal.bairro == req.query.bairro
-  );
-  res.json(animaisPorBairroFiltrados);
-};
+// const getAllAnimalsForShelterNeighborhood = async (req, res) => {
+//   const animaisPorBairro = await Animals.find().populate("bairro");
+//   const animaisPorBairroFiltrados = animaisPorBairro.filter(
+//     (animal) => animal.bairro == req.query.bairro
+//   );
+//   res.json(animaisPorBairroFiltrados);
+// };
 
 const createAnimals = async (req, res) => {
   const createAnimals = new Animals({
@@ -123,7 +124,7 @@ module.exports = {
   getById,
   getAll,
   getAllAnimalsShelter,
-  getAllAnimalsForShelterNeighborhood,
+  // getAllAnimalsForShelterNeighborhood,
   createAnimals,
   updateAnimalById,
   deletarAnimalById,
