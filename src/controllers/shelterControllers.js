@@ -12,9 +12,9 @@ const getById = async (req, res) => {
 };
 
 const getAllShelterForNeighborhood = async (req, res) => {
-    const abrigosPorBairro = await Shelter.find()
+    const abrigosPorBairro = await Shelter.find().populate("bairro");
     const abrigosPorBairroFiltrados = abrigosPorBairro.filter(
-      (animal) => animal.bairro == req.body.bairro
+      (animal) => animal.bairro == req.query.bairro
     );
     res.json(abrigosPorBairroFiltrados);
   };

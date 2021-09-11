@@ -1,8 +1,10 @@
 const express = require ('express');
-require("dotenv").config();
 
 const app = express()
 app.use(express.json())
+
+const index = require('./src/routes/index')
+app.use('/', index)
 
 const db = require('./src/data/database')
 db.connect()

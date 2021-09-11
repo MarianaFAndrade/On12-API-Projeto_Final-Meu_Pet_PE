@@ -22,7 +22,7 @@ const getAllAnimalsShelter = async (req, res) => {
 const getAllAnimalsForShelterNeighborhood = async (req, res) => {
   const animaisPorBairro = await Animals.find().populate("bairro");
   const animaisPorBairroFiltrados = animaisPorBairro.filter(
-    (animal) => animal.bairro == req.body.bairro
+    (animal) => animal.bairro == req.query.bairro
   );
   res.json(animaisPorBairroFiltrados);
 };
