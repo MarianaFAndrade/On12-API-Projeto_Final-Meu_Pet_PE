@@ -1,10 +1,10 @@
 const express = require ('express');
+
 const app = express()
+app.use(express.json())
 
 const db = require('./src/data/database')
 db.connect()
-
-app.use(express.json())
 
 const animalsRouter = require('./src/routes/animals.routes')
 app.use('/animals', animalsRouter)

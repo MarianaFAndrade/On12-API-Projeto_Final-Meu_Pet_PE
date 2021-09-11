@@ -1,5 +1,5 @@
 {
-  "name": "On12-API-Final-Meu_Pet_PE",
+  "name": "on12-api-final-meu-pet-pe",
   "version": "1.0.0",
   "description": "API voltada para juntar anjinhos desabrigados com seus tutores",
   "main": "server.js",

@@ -12,7 +12,7 @@ const getById = async (req, res) => {
 };
 
 const getAllShelterForNeighborhood = async (req, res) => {
-    const abrigosPorBairro = await Animals.find().populate("bairro");
+    const abrigosPorBairro = await Shelter.find()
     const abrigosPorBairroFiltrados = abrigosPorBairro.filter(
       (animal) => animal.bairro == req.body.bairro
     );
