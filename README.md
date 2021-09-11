@@ -6,10 +6,7 @@
   </a>
 </p>
 
-<h1 align="center">
-  <img src="https://trello.com/1/cards/60b51ec71e4efb5d829d296c/attachments/613c52f31bfbd57912264e8b/download/5466091.png" width="500">
-<p align="center">
-</h1>
+![MEU-PET-PE](https://trello.com/1/cards/60b51ec71e4efb5d829d296c/attachments/613c52f31bfbd57912264e8b/download/5466091.png)
 
 > API Rest de adoção de animais Recife-PE.
 
