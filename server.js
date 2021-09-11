@@ -1,4 +1,5 @@
 const express = require ('express');
+require("dotenv").config();
 
 const app = express()
 app.use(express.json())
@@ -15,7 +16,7 @@ app.use('/shelter', shelterRouter)
 const tutorRouter = require('./src/routes/tutor.routes')
 app.use('/tutor', tutorRouter)
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`)
