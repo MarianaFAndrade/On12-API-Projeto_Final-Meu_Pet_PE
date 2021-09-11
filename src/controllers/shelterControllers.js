@@ -21,14 +21,14 @@ const getAllShelterForNeighborhood = async (req, res) => {
 
 const createShelter = async (req, res) => {
     const createShelter = new Shelter ({
-        // _id: new mongoose.Types.ObjectId(),
+        _id: new mongoose.Types.ObjectId(),
         nome: req.body.nome,
         endereco: req.body.endereco,
         bairro: req.body.bairro,
         telefone: req.body.telefone,
         criadoEm: req.body.criadoEm,
     })
-    const shelterJaExiste = await Shelter.findOne({nome: req.body.nome})
+    const shelterJaExiste = await Shelter.find({nome: req.body.nome})
     if (shelterJaExiste) {
         return res.status(409).json({error: 'Abrigo/LT já cadastrado'})
     }
