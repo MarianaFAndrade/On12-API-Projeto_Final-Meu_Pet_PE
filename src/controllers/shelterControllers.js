@@ -21,7 +21,7 @@ const getAllShelterForNeighborhood = async (req, res) => {
 
 const createShelter = async (req, res) => {
     const createShelter = new Shelter ({
-        _id: new mongoose.Types.ObjectId(),
+        // _id: new mongoose.Types.ObjectId(),
         nome: req.body.nome,
         endereco: req.body.endereco,
         bairro: req.body.bairro,
