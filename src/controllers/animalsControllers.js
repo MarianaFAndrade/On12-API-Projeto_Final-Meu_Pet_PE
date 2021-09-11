@@ -1,4 +1,3 @@
-const express = require('express')
 const mongoose = require("mongoose");
 const Animals = require("../models/animals");
 
@@ -8,8 +7,8 @@ const getById = async (req, res) => {
 };
 
 const getAll = async (req, res) => {
-    const animals = await Animals.find().populate("abrigo");
-    res.json(animals);
+  const animals = await Animals.find().populate("abrigo");
+  res.json(animals);
 };
 
 const getAllAnimalsShelter = async (req, res) => {
@@ -20,13 +19,13 @@ const getAllAnimalsShelter = async (req, res) => {
   res.json(animaisPorAbrigosFiltrados);
 };
 
-// const getAllAnimalsForShelterNeighborhood = async (req, res) => {
-//   const animaisPorBairro = await Animals.find().populate("bairro");
-//   const animaisPorBairroFiltrados = animaisPorBairro.filter(
-//     (animal) => animal.bairro == req.query.bairro
-//   );
-//   res.json(animaisPorBairroFiltrados);
-// };
+const getAllAnimalsForShelterNeighborhood = async (req, res) => {
+  const animaisPorBairro = await Animals.find().populate("bairro");
+  const animaisPorBairroFiltrados = animaisPorBairro.filter(
+    (animal) => animal.bairro.query == req.query.bairro
+  );
+  res.json(animaisPorBairroFiltrados);
+};
 
 const createAnimals = async (req, res) => {
   const createAnimals = new Animals({
@@ -41,8 +40,8 @@ const createAnimals = async (req, res) => {
     bairro: req.body.bairro,
     status: req.body.status,
     criadoEm: req.body.criadoEm,
-  });
-  const animalsJaExiste = await Animals.findOne({
+  })
+  const animalsJaExiste = await Animals.findOne({ 
     nome: req.body.nome,
     especie: req.body.especie,
     sexo: req.body.sexo,
@@ -52,17 +51,16 @@ const createAnimals = async (req, res) => {
     abrigo: req.body.abrigo,
     bairro: req.body.bairro,
     status: req.body.status,
-  });
-
+   })
   if (animalsJaExiste) {
-    return res.status(409).json({ error: "Animal já cadastrado" });
+    return res.status(409).json({ error: 'Animal já cadastrado' })
   }
 
   try {
-    const newAnimals = await createAnimals.save();
-    res.status(201).json(newAnimals);
+    const newAnimal = await createAnimals.save()
+    res.status(201).json(newAnimal)
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(400).json({ message: err.message })
   }
 };
 
@@ -124,7 +122,7 @@ module.exports = {
   getById,
   getAll,
   getAllAnimalsShelter,
-  // getAllAnimalsForShelterNeighborhood,
+  getAllAnimalsForShelterNeighborhood,
   createAnimals,
   updateAnimalById,
   deletarAnimalById,

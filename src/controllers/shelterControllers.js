@@ -1,4 +1,3 @@
-const express = require('express')
 const mongoose = require('mongoose')
 const Shelter = require('../models/shelter')
 
@@ -29,7 +28,7 @@ const createShelter = async (req, res) => {
         telefone: req.body.telefone,
         criadoEm: req.body.criadoEm,
     })
-    const shelterJaExiste = await Shelter.find({nome: req.body.nome})
+    const shelterJaExiste = await Shelter.findOne({nome: req.body.nome})
     if (shelterJaExiste) {
         return res.status(409).json({error: 'Abrigo/LT já cadastrado'})
     }
