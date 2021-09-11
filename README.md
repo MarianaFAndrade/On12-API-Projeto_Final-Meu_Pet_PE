@@ -6,7 +6,7 @@
   </a>
 </p>
 
-[![MEU-PET-PE](https://trello.com/1/cards/60b51ec71e4efb5d829d296c/attachments/613c52f31bfbd57912264e8b/download/5466091.png)
+![MEU-PET-PE](https://github.com/MarianaFAndrade/On12-API-Projeto_Final-Meu_Pet_PE/blob/main/docs/images/5466091.png)
 
 > API Rest de adoção de animais Recife-PE.
 
