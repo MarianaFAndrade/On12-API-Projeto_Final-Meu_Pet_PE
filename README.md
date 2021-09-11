@@ -42,11 +42,11 @@ Para minimizar o impacto dos animais nas ruas e ajudar na diminuição da popula
     <a href="https://www.mongodb.com/cloud/atlas"><img src="https://img.shields.io/badge/MongoDB%20Atlas-blue">
     <a href="https://herokuapp.com/"><img src="https://img.shields.io/badge/Heroku-blue">
     <br/>
-    <a href="https://www.npmjs.com/"><img src="https://img.shields.io/badge/npm-6.14.6-purple">
-    <a href="https://expressjs.com/pt-br/"><img src="https://img.shields.io/badge/express-4.17.1-purple">
-    <a href="https://mongoosejs.com/"><img src="https://img.shields.io/badge/mongoose-5.10.17-purple">
-    <a href="https://www.npmjs.com/package/dotenv-safe"><img src="https://img.shields.io/badge/dotenv-8.2.0-purple">
-    <a href="https://www.npmjs.com/package/nodemon"><img src="https://img.shields.io/badge/nodemon-2.0.6-purple">
+    <a href="https://www.npmjs.com/"><img src="https://img.shields.io/badge/npm-6.14.6-lightblue">
+    <a href="https://expressjs.com/pt-br/"><img src="https://img.shields.io/badge/express-4.17.1-lightblue">
+    <a href="https://mongoosejs.com/"><img src="https://img.shields.io/badge/mongoose-5.10.17-lightblue">
+    <a href="https://www.npmjs.com/package/dotenv-safe"><img src="https://img.shields.io/badge/dotenv-8.2.0-lightblue">
+    <a href="https://www.npmjs.com/package/nodemon"><img src="https://img.shields.io/badge/nodemon-2.0.6-lightblue">
   </a> 
 </p>
 
